@@ -1,7 +1,10 @@
 ---
 name: Feature request
 about: Suggest how we can improve
-labels: enhancement
+title: ''
+labels: bug, documentation, enhancement
+assignees: ''
+
 ---
 
 #### Reason/Context
