@@ -1,3 +1,2 @@
-labels:
-  Triage:
-    - '.*Describe the bug.*'
+Triage:
+  - '(Describe the bug)'
