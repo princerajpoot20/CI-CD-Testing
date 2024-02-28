@@ -49,11 +49,11 @@ jobs:
         script: |
         
           const octokit = require('@octokit/core').Octokit;
-          const mygithub = new octokit({
-            request: { fetch: fetch,},
-            auth: process.env.MY_TOKEN
-          });
-          console.log("Token:" + process.env.MY_TOKEN);
+          # const mygithub = new octokit({
+          #   request: { fetch: fetch,},
+          #   auth: process.env.MY_TOKEN
+          # });
+          # console.log("Token:" + process.env.MY_TOKEN);
           const ocwmnumber = ${{ steps.create-issue.outputs.issue-number }};
           const { data: ocwmissue } = await mygithub.request(`GET /repos/${context.repo.owner}/${context.repo.repo}/issues/${ ocwmnumber }`, {
           })
