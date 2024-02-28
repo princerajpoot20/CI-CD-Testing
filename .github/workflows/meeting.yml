@@ -68,16 +68,16 @@ jobs:
           const newTitle = ocwmissue.title;
           const issueDate = newTitle.replace(/Open Community Working Meeting /g, "");
           
-          // Notify Slack
-          const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK;
-          const SLACK_MESSAGE = `{
-            "issue": "https://github.com/${context.repo.owner}/${context.repo.repo}/issues/${ocwmnumber}",
-            "date": "${issueDate}"
-          }`;
-          await fetch(SLACK_WEBHOOK_URL, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: SLACK_MESSAGE,
-          });
+          # // Notify Slack
+          # const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK;
+          # const SLACK_MESSAGE = `{
+          #   "issue": "https://github.com/${context.repo.owner}/${context.repo.repo}/issues/${ocwmnumber}",
+          #   "date": "${issueDate}"
+          # }`;
+          # await fetch(SLACK_WEBHOOK_URL, {
+          #   method: 'POST',
+          #   headers: {
+          #     'Content-Type': 'application/json',
+          #   },
+          #   body: SLACK_MESSAGE,
+          # });
