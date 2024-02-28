@@ -49,11 +49,11 @@ jobs:
         script: |
         
           const octokit = require('@octokit/core').Octokit;
-          # const mygithub = new octokit({
-          #   request: { fetch: fetch,},
-          #   auth: process.env.MY_TOKEN
-          # });
-          # console.log("Token:" + process.env.MY_TOKEN);
+          const mygithub = new octokit({
+            request: { fetch: fetch,},
+            auth: process.env.MY_TOKEN
+          });
+          console.log("Token:" + process.env.MY_TOKEN);
           const ocwmnumber = ${{ steps.create-issue.outputs.issue-number }};
           const { data: ocwmissue } = await mygithub.request(`GET /repos/${context.repo.owner}/${context.repo.repo}/issues/${ ocwmnumber }`, {
           })
@@ -68,16 +68,16 @@ jobs:
           const newTitle = ocwmissue.title;
           const issueDate = newTitle.replace(/Open Community Working Meeting /g, "");
           
-          # // Notify Slack
-          # const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK;
-          # const SLACK_MESSAGE = `{
-          #   "issue": "https://github.com/${context.repo.owner}/${context.repo.repo}/issues/${ocwmnumber}",
-          #   "date": "${issueDate}"
-          # }`;
-          # await fetch(SLACK_WEBHOOK_URL, {
-          #   method: 'POST',
-          #   headers: {
-          #     'Content-Type': 'application/json',
-          #   },
-          #   body: SLACK_MESSAGE,
-          # });
+          // Notify Slack
+          const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK;
+          const SLACK_MESSAGE = `{
+            "issue": "https://github.com/${context.repo.owner}/${context.repo.repo}/issues/${ocwmnumber}",
+            "date": "${issueDate}"
+          }`;
+          await fetch(SLACK_WEBHOOK_URL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: SLACK_MESSAGE,
+          });
